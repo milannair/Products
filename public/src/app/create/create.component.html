@@ -1,0 +1,14 @@
+<h3>Add a Product</h3>
+<form (submit)="onSubmit()">
+    Name:<input type="text" name="newProd.name" required minlength="3" [(ngModel)]="newProd.name" #name = ngModel /> <br>
+    <p *ngIf="!name.valid && name.touched">Your product name is too short</p>
+
+    Quantity:<input type="decimal" name="newProd.quantity" required min ="0" step = "1" [(ngModel)]="newProd.quantity" #quantity = ngModel /> <br>
+    <p *ngIf="!quantity.valid && quantity.touched">Your quantity must be greater than 0</p>
+
+    Price:<input type="number" name="newProd.price" required min ="0" [(ngModel)]="newProd.price" #price = ngModel /> <br>
+    <p *ngIf="!price.valid && price.touched">Your product can't be less than free</p>
+
+    <input *ngIf="name.valid && quantity.valid && price.valid" type="submit" value="Add Product" />
+    <button [routerLink]="[ '/products']">Cancel</button>
+</form>

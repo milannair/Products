@@ -1,0 +1,6 @@
+<h3>Product Details</h3>
+<h5>Name: {{currentProd.name}}</h5>
+<h5>Quantity: {{currentProd.quantity}}</h5>
+<h5>Price: {{currentProd.price}}</h5>
+<button [routerLink]="[ '/products']">Back</button>
+<button (click) = "deleteProd(currentProd._id)" *ngIf="currentProd.quantity === 0">Delete</button>

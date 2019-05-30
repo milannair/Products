@@ -1,0 +1,16 @@
+<h3>Edit a Product</h3>
+<form (submit)="onSubmit()">
+    Name:<input type="text" name="editProd.name" required minlength="3" [(ngModel)]="editProd.name" #name = ngModel /> <br>
+    <p *ngIf="!name.valid && name.touched">Your product name is too short</p>
+
+    Quantity:<input type="decimal" name="editProd.quantity" required min ="0" step = "1" [(ngModel)]="editProd.quantity" #quantity = ngModel /> <br>
+    <p *ngIf="!quantity.valid && quantity.touched">Your quantity must be greater than 0</p>
+
+    Price:<input type="number" name="editProd.price" required min ="0" [(ngModel)]="editProd.price" #price = ngModel /> <br>
+    <p *ngIf="!price.valid && price.touched">Your product can't be less than free</p>
+
+    <button [routerLink]="[ '/reset', editProd._id]">Reset</button>
+    <input *ngIf="name.valid && quantity.valid && price.valid" type="submit" value="Update" />
+</form>
+
+
